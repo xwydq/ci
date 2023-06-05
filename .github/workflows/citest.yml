@@ -27,5 +27,5 @@ jobs:
         uses: docker/build-push-action@v4.0.0
         with:
           push: true
-          #tags: xwydq/pythonapp:latest
-          run: docker build . --file Dockerfile_py310 --tag xwydq/py310app:$(date +%s)
+          tags: xwydq/pythonapp:latest
+          file: Dockerfile_py310
