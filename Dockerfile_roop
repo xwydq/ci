@@ -11,12 +11,13 @@ ADD . /app
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/London
 RUN apt-get update
-RUN apt-get install vim -y
-RUN apt-get install -y iputils-ping
+RUN apt-get -y install wget vim iputils-ping
 RUN apt-get -y install gcc
 RUN apt-get -y install g++
 RUN apt-get -y install tk
 RUN apt-get -y install libglib2.0-0 libsm6 libxrender1 libxext6
+# RUN cd /opt && wget https://johnvansickle.com/ffmpeg/releases/ffmpeg-release-amd64-static.tar.xz && tar -xf ffmpeg-release-amd64-static.tar.xz && mv ffmpeg-6.0-amd64-static ffmpeg && rm -f ffmpeg-release-amd64-static.tar.xz && conda remove -y ffmpeg && ln -s /opt/ffmpeg/ffmpeg /usr/bin/ffmpeg && ln -s /opt/ffmpeg/ffmpeg /opt/conda/bin/ffmpeg
+RUN conda remove -y ffmpeg && conda install -y ffmpeg
 
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
