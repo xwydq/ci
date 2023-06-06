@@ -8,6 +8,8 @@ WORKDIR /app
 ADD . /app
 
 # 安装应用所需的依赖
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/London
 RUN apt-get update
 RUN apt-get install vim -y
 RUN apt-get install -y iputils-ping
